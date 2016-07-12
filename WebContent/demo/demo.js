@@ -32,7 +32,7 @@ app.run(function($rootScope){
 // in order to avoid unwanted routing.
 // 
 app.config(function($routeProvider) {
-  $routeProvider.when('/',              {templateUrl: 'demo/home.html', reloadOnSearch: false});
+  $routeProvider.when('/',              {templateUrl: 'demo/tabs.html', reloadOnSearch: false});
   $routeProvider.when('/scroll',        {templateUrl: 'demo/scroll.html', reloadOnSearch: false}); 
   $routeProvider.when('/toggle',        {templateUrl: 'demo/toggle.html', reloadOnSearch: false}); 
   $routeProvider.when('/tabs',          {templateUrl: 'demo/tabs.html', reloadOnSearch: false}); 
