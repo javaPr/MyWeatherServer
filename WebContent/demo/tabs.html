@@ -1,5 +1,5 @@
-<div ui-content-for="title">
-  <span>Tabs</span>
+<div ui-content-for="title" xmlns="http://www.w3.org/1999/html">
+  <span>天气预报</span>
 </div>
 
 <div class="scrollable">
@@ -9,41 +9,76 @@
 
       <ul class="nav nav-tabs">
         <li ui-class="{'active': activeTab == 1}">
-          <a ui-set="{'activeTab': 1}">Tab 1</a>
+          <a ui-set="{'activeTab': 1}">今日详情 </a>
         </li>
         <li ui-class="{'active': activeTab == 2}">
-          <a ui-set="{'activeTab': 2}">Tab 2</a>
-        </li>
-        <li ui-class="{'active': activeTab == 3}">
-          <a ui-set="{'activeTab': 3}">Tab 3</a>
+          <a ui-set="{'activeTab': 2}">未来五日</a>
         </li>
       </ul>
 
       <div ui-if="activeTab == 1">
-        <h3 class="page-header">Tab 1</h3>
-        <p>{{lorem}}</p>
+        <div class = "left">
+          <div>
+            <h2 class="page-header"> 今日天气 </h2>
+          </div>
+          <div>
+            <p>small><span ng-bind="now.dt"></span></small></p><br>
+            <h3><small>最低气温: <span ng-bind="now.main.temp_min"></span></small></h3><br>
+            <h3><small>最高气温: <span ng-bind="now.main.temp_max"></span></small></h3><br>
+            <h3><small>气压: <span ng-bind="now.main.pressure"></span></small></h3><br>
+            <h3><small>湿度: <span ng-bind="now.main.humidity"></span></small></h3><br>
+            <h3><small>风力: <span ng-bind="now.wind.speed + '  ' + now.wind.deg"></span></small></h3><br>
+          </div>
+        </div>
+        <div class="right">
+          <div>
+            <h><span ng-bind ="now.main.temp"></span></h>
+          </div>
+          <div>
+            <h3><small><span ng-bind ="now.weather.main"></span></small></h3>
+          </div>
+          <div>
+            <h3><small><span ng-bind ="now.weather.description"></span></small></h3>
+          </div>
+        </div>
       </div>
 
-      <div ui-if="activeTab == 2">
-        <h3 class="page-header">Tab 2</h3>
-        <p>{{lorem}}</p>
+      <div ui-if="activeTab == 2" ng-bind="further">
+        <h3 class="page-header">未来5日</h3>
+        <div class="list-group-item list-group-item-home">
+          <div>
+            <h3 class="home-heading">{{further[0].time + '  ' + further[0].temp}}</h3>
+            {{further[0].weather}}
+          </div>
+        </div>
+        <div class="list-group-item list-group-item-home">
+          <div>
+            <h3 class="home-heading">{{further[1].time + '  ' + further[1].temp}}</h3>
+            {{further[1].weather}}
+          </div>
+        </div>
+        <div class="list-group-item list-group-item-home">
+          <div>
+            <h3 class="home-heading">{{further[2].time + '  ' + further[2].temp}}</h3>
+            {{further[2].weather}}
+          </div>
+        </div>
+        <div class="list-group-item list-group-item-home">
+          <div>
+            <h3 class="home-heading">{{further[3].time + '  ' + further[3].temp}}</h3>
+            {{further[3].weather}}
+          </div>
+        </div>
+        <div class="list-group-item list-group-item-home">
+          <div>
+            <h3 class="home-heading">{{further[4].time + '  ' + further[4].temp}}</h3>
+            {{further[4].weather}}
+          </div>
+        </div>
       </div>
 
-      <div ui-if="activeTab == 3">
-        <h3 class="page-header">Tab 3</h3>
-        <p>{{lorem}}</p>
-      </div>
 
-      <div class="btn-group justified nav-tabs">
-        <a ui-set="{'activeTab': 1}" 
-            ui-class="{'active': activeTab == 1}" class="btn btn-default">Tab 1</a>
 
-        <a ui-set="{'activeTab': 2}" 
-            ui-class="{'active': activeTab == 2}" class="btn btn-default">Tab 2</a>
-
-        <a ui-set="{'activeTab': 3}" 
-            ui-class="{'active': activeTab == 3}" class="btn btn-default">Tab 3</a>
-      </div>  
     </div>
 
   </div>

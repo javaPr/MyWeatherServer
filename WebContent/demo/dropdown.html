@@ -1,38 +1,35 @@
 <div ui-content-for="title">
-  <span>Dropdown</span>
+  <span></span>
 </div>
 
 <div class="scrollable">
   <div class="scrollable-content">
     <div class="section">
         
-      <div class="panel panel-default" ng-repeat="idx in [1,2,3]">
+      <div class="panel panel-default">
         <div class="panel-heading">
-          <div class="btn-group pull-right">
-            <a ui-turn-on='myDropdown{{idx}}' class='btn'>
-              <i class="fa fa-ellipsis-v"></i>
-            </a>
-            <ul 
-              ui-state="myDropdown{{idx}}"
-
-              class="dropdown-menu"
-              ui-outer-click="Ui.turnOff('myDropdown' + idx)"
-              ui-outer-click-if="Ui.active('myDropdown' + idx)"
-              role="menu"
-              ui-show="myDropdown{{idx}}"
-              ui-turn-off="myDropdown{{idx}}">
-
-              <li><a>Action</a></li>
-              <li><a>Another action</a></li>
-              <li><a>Something else here</a></li>
-              <li class="divider"></li>
-              <li><a>Separated link</a></li>
-            </ul>
-          </div>
-          <h3 class="panel-title">Note</h3>
+          <h3 class="panel-title">穿衣指数</h3>
         </div>
-        <div class="panel-body">
-           {{lorem}}
+        <div class="panel-body" ng-bind = "clothes">
+           {{clothes}}
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">装备配备</h3>
+        </div>
+        <div class="panel-body" ng-bind = "equip">
+          {{clothes}}
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">注意事项</h3>
+        </div>
+        <div class="panel-body" ng-bind = "caution">
+          {{clothes}}
         </div>
       </div>
 
