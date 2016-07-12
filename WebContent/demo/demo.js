@@ -19,6 +19,13 @@ app.run(function($transform) {
   window.$transform = $transform;
 });
 
+app.run(function($rootScope){
+	   $rootScope.$on('$stateChangeStart', function() {
+		$rootScope.broadcast('$routeChangeStart');
+	});
+});
+
+
 // 
 // You can configure ngRoute as always, but to take advantage of SharedState location
 // feature (i.e. close sidebar on backbutton) you should setup 'reloadOnSearch: false' 
@@ -39,7 +46,9 @@ app.config(function($routeProvider) {
   $routeProvider.when('/drag2',         {templateUrl: 'demo/drag2.html', reloadOnSearch: false});
   $routeProvider.when('/carousel',      {templateUrl: 'demo/carousel.html', reloadOnSearch: false});
   $routeProvider.when('/sidebar',      {templateUrl: 'demo/sidebar.html', reloadOnSearch: false});
-  
+  $routeProvider.when('/activities',    {templateUrl:'demo/activities.html',reloadOnSearch:false});
+  /*$routeProvider.otherwise()*/
+ 
 });
 
 // 
