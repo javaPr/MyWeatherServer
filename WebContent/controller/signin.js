@@ -19,9 +19,10 @@ app.controller("signCtrl",['$scope','$http',function($scope,$http){
 				email : $scope.user.email
 			}
 		}).success(function(data) {
-			alert("保存成功！！");
+			console.log(data);
+			//alert("保存成功！！");
 		}).error(function() {
-			alert("调用后台方法失败！！");
+			console.log("调用后台方法失败！！");
 		});
 			
 			

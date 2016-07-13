@@ -1,9 +1,7 @@
 package com.baixing.myweather;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -13,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.baixing.myweather.bean.Activity;
+import com.baixing.myweather.bean.User;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 /**
@@ -92,9 +90,16 @@ public class LoginServlet extends HttpServlet {
             System.out.println(it.next());
         }
 		*/
+        String email = request.getParameter("email");
         System.out.println(request.getParameter("email"));
         String password = request.getParameter("password");
         System.out.println(password);
+        User user = new User();
+        user.setUsername("admin");
+        user.setPassword("1234");
+        //String loginRes = Utils.sendGet("http://wdchang.github.io/mydata/jsondata.json");
+        
+       
        
 		List<Activity> listActicity = new ArrayList<>();
 		
@@ -107,6 +112,10 @@ public class LoginServlet extends HttpServlet {
 		String json = new Gson().toJson(listActicity);
         response.setContentType("application/json");
         response.getWriter().write(json);
+        System.out.println("========================");
+        
+        String res = Utils.sendPost("http://172.17.0.211:1234/api/user/login",new Gson().toJson(user));
+        System.out.println(res);
 	}
 
 }

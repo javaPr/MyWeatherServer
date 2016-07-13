@@ -1,87 +1,138 @@
 <meta charset="UTF-8" />
 <div ui-content-for="title" xmlns="http://www.w3.org/1999/html">
-  <span>天气预报</span>
+	<span>天气预报</span>
 </div>
 
 <div class="scrollable">
-  <div class="scrollable-content">
-    <div class='section'>
-      <ui-state id='activeTab' default='1'></ui-state>
+	<div class="scrollable-content" ng-controller="forecastCtrl">
+		<div class='section'>
+			<ui-state id='activeTab' default='1'></ui-state>
 
-      <ul class="nav nav-tabs">
-        <li ui-class="{'active': activeTab == 1}">
-          <a ui-set="{'activeTab': 1}">今日详情 </a>
-        </li>
-        <li ui-class="{'active': activeTab == 2}">
-          <a ui-set="{'activeTab': 2}">未来五日</a>
-        </li>
-      </ul>
+			<ul class="nav nav-tabs">
+				<li ui-class="{'active': activeTab == 1}"><a
+					ui-set="{'activeTab': 1}">今日详情 </a></li>
+				<li ui-class="{'active': activeTab == 2}"><a
+					ui-set="{'activeTab': 2}">未来五日</a></li>
+			</ul>
 
-      <div ui-if="activeTab == 1">
-        <div class = "left">
-          <div>
-            <h2 class="page-header"> 今日天气 </h2>
-          </div>
-          <div>
-            <p><small>这是测试时间<span ng-bind="now.dt"></span></small></p><br>
-            <h3><small>最低气温: <span ng-bind="now.main.temp_min"></span></small></h3><br>
-            <h3><small>最高气温: <span ng-bind="now.main.temp_max"></span></small></h3><br>
-            <h3><small>气压: <span ng-bind="now.main.pressure"></span></small></h3><br>
-            <h3><small>湿度: <span ng-bind="now.main.humidity"></span></small></h3><br>
-            <h3><small>风力: <span ng-bind="now.wind.speed + '  ' + now.wind.deg"></span></small></h3><br>
-          </div>
-        </div>
-        <div class="right">
-          <div>
-            <h><span ng-bind ="now.main.temp"></span></h>
-          </div>
-          <div>
-            <h3><small><span ng-bind ="now.weather.main"></span></small></h3>
-          </div>
-          <div>
-            <h3><small><span ng-bind ="now.weather.description"></span></small></h3>
-          </div>
-        </div>
-      </div>
+			<div ui-if="activeTab == 1">
+				<div class="left">
+					<div>
+						<h2 class="page-header">今日天气</h2>
+					</div>
+					<div>
+						<p>
+							<small><span ng-bind="now.dt"></span></small>
+						</p>
+						<br>
+						<h3>
+							<small>最低气温: <span ng-bind="now.main.temp_min"></span></small>
+						</h3>
+						<br>
+						<h3>
+							<small>最高气温: <span ng-bind="now.main.temp_max"></span></small>
+						</h3>
+						<br>
+						<h3>
+							<small>气压: <span ng-bind="now.main.pressure"></span></small>
+						</h3>
+						<br>
+						<h3>
+							<small>湿度: <span ng-bind="now.main.humidity"></span></small>
+						</h3>
+						<br>
+						<h3>
+							<small>风力: <span
+								ng-bind="now.wind.speed + '  ' + now.wind.deg"></span></small>
+						</h3>
+						<br>
+					</div>
+				</div>
+				<div class="right">
+					<div>
+						<h> 当前温度<span ng-bind="now.main.temp"></span></h>
+					</div>
+					<div>
+						<h3>
+							<small>天气情况<span ng-bind="now.weather.main"></span></small>
+						</h3>
+					</div>
+					<div>
+						<h3>
+							<small><span ng-bind="now.weather.description"></span></small>
+						</h3>
+					</div>
+				</div>
+			</div>
 
-      <div ui-if="activeTab == 2" ng-bind="further">
-        <h3 class="page-header">未来5日</h3>
-        hello worldhello world
-        <div class="list-group-item list-group-item-home">
-          <div>
-            <h3 class="home-heading">{{further[0].time + '  ' + further[0].temp}}</h3>
-            {{further[0].weather}}
-          </div>
-        </div>
-        <div class="list-group-item list-group-item-home">
-          <div>
-            <h3 class="home-heading">{{further[1].time + '  ' + further[1].temp}}</h3>
-            {{further[1].weather}}
-          </div>
-        </div>
-        <div class="list-group-item list-group-item-home">
-          <div>
-            <h3 class="home-heading">{{further[2].time + '  ' + further[2].temp}}</h3>
-            {{further[2].weather}}
-          </div>
-        </div>
-        <div class="list-group-item list-group-item-home">
-          <div>
-            <h3 class="home-heading">{{further[3].time + '  ' + further[3].temp}}</h3>
-            {{further[3].weather}}
-          </div>
-        </div>
-        <div class="list-group-item list-group-item-home">
-          <div>
-            <h3 class="home-heading">{{further[4].time + '  ' + further[4].temp}}</h3>
-            {{further[4].weather}}
-          </div>
-        </div>
-      </div>
+			<div ui-if="activeTab == 2">
+				<div>
+					<h2 class="page-header">未来五日天气</h2>
+				</div>
+				<!-- <h3 class="page-header">未来五日天气</h3> -->
+				<table class="table">
+			<tr>
+				<td>
+					<dl>
+						<dt>某某人</dt>
+						<dd>下面是关于活动的内容，某某工程师技术交流活动.</dd>
+						<dd>2016-8-9</dd>
+					</dl>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<dl>
+						<dt>某某人</dt>
+						<dd>下面是关于活动的内容，某某工程师技术交流活动.</dd>
+						<dd>2016-8-9</dd>
+					</dl>
+				</td>
+			</tr>
 
+			<tr>
+				<td>
+					<dl>
+						<dt>某某人</dt>
+						<dd>下面是关于活动的内容，某某工程师技术交流活动.</dd>
+						<dd>2016-8-9</dd>
+					</dl>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<dl>
+						<dt>某某人</dt>
+						<dd>下面是关于活动的内容，某某工程师技术交流活动.</dd>
+						<dd>2016-8-9</dd>
+					</dl>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<dl>
+						<dt>某某人</dt>
+						<dd>下面是关于活动的内容，某某工程师技术交流活动.</dd>
+						<dd>2016-8-9</dd>
+					</dl>
+				</td>
+			</tr>
+			
 
+			<tr ng-repeat="acti in weatherList">
+				<td>
+					<dl>
+						<dt>{{acti.name}}</dt>
+						<dd>{{acti.content}}</dd>
+						<dd>{{acti.time}}</dd>
+					</dl>
+				</td>
+			</tr>
+			 
+		</table>
+			</div>
+		</div>
 
-    </div>
-
-  </div>
+	</div>
 </div>
