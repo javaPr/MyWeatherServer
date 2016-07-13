@@ -71,7 +71,7 @@
 				</div>
 				<!-- <h3 class="page-header">未来五日天气</h3> -->
 				<table class="table">
-			<tr>
+			<!-- <tr>
 				<td>
 					<dl>
 						<dt>某某人</dt>
@@ -117,15 +117,16 @@
 						<dd>2016-8-9</dd>
 					</dl>
 				</td>
-			</tr>
+			</tr> -->
 			
 
-			<tr ng-repeat="acti in weatherList">
+			<tr ng-repeat="wea in weatherList">
 				<td>
 					<dl>
-						<dt>{{acti.name}}</dt>
-						<dd>{{acti.content}}</dd>
-						<dd>{{acti.time}}</dd>
+						<dt>温度 ： {{wea[0].main.temp}}</dt>
+						<dd>天气： {{wea[0].weather.main}}({{wea[0].weather.description}})</dd>
+						<dd>湿度： {{wea[0].main.humidity}}</dd>
+						<dd>湿度： {{wea[0].dt}}</dd>
 					</dl>
 				</td>
 			</tr>
