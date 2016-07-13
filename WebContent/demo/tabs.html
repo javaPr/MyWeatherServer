@@ -54,7 +54,9 @@
 					</div>
 					<div>
 						<h3>
-							<small>天气情况<span ng-bind="now.weather.main"></span></small>
+							<small>天气情况:<span ng-bind="now.weather.main"></span>
+							({{now.weather.description}})
+							</small>
 						</h3>
 					</div>
 					<div>
@@ -126,7 +128,7 @@
 						<dt>温度 ： {{wea[0].main.temp}}</dt>
 						<dd>天气： {{wea[0].weather.main}}({{wea[0].weather.description}})</dd>
 						<dd>湿度： {{wea[0].main.humidity}}</dd>
-						<dd>湿度： {{wea[0].dt}}</dd>
+						<dd>时间： {{wea[0].dt}}</dd>
 					</dl>
 				</td>
 			</tr>
