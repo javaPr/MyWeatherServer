@@ -22,7 +22,7 @@
             <h2 class="page-header"> 今日天气 </h2>
           </div>
           <div>
-            <p>small><span ng-bind="now.dt"></span></small></p><br>
+            <p><small><span ng-bind="now.dt"></span></small></p><br>
             <h3><small>最低气温: <span ng-bind="now.main.temp_min"></span></small></h3><br>
             <h3><small>最高气温: <span ng-bind="now.main.temp_max"></span></small></h3><br>
             <h3><small>气压: <span ng-bind="now.main.pressure"></span></small></h3><br>
@@ -44,7 +44,9 @@
       </div>
 
       <div ui-if="activeTab == 2" ng-bind="further">
-        <h3 class="page-header">未来5日</h3>
+        <div class="scrollable">
+          <div class="scrollable-content">
+            <div class="list-group text-center">
         <div class="list-group-item list-group-item-home">
           <div>
             <h3 class="home-heading">{{further[0].time + '  ' + further[0].temp}}</h3>
@@ -76,9 +78,9 @@
           </div>
         </div>
       </div>
-
-
-
+            </div>
+          </div>
+        </div>
     </div>
 
   </div>
