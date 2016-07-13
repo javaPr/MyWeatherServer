@@ -1,3 +1,4 @@
+<meta charset="UTF-8" />
 <div ui-content-for="title" xmlns="http://www.w3.org/1999/html">
   <span>天气预报</span>
 </div>
@@ -22,7 +23,7 @@
             <h2 class="page-header"> 今日天气 </h2>
           </div>
           <div>
-            <p>small><span ng-bind="now.dt"></span></small></p><br>
+            <p><small>这是测试时间<span ng-bind="now.dt"></span></small></p><br>
             <h3><small>最低气温: <span ng-bind="now.main.temp_min"></span></small></h3><br>
             <h3><small>最高气温: <span ng-bind="now.main.temp_max"></span></small></h3><br>
             <h3><small>气压: <span ng-bind="now.main.pressure"></span></small></h3><br>
@@ -45,6 +46,7 @@
 
       <div ui-if="activeTab == 2" ng-bind="further">
         <h3 class="page-header">未来5日</h3>
+        hello worldhello world
         <div class="list-group-item list-group-item-home">
           <div>
             <h3 class="home-heading">{{further[0].time + '  ' + further[0].temp}}</h3>

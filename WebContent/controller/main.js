@@ -2,9 +2,9 @@
  * 
  */
 'use strict';
-var helloAjaxApp = angular.module("myApp", []);
+//var helloAjaxApp = angular.module("MobileAngularUiExamples", []);
 
-helloAjaxApp.controller("myCtrl", [ '$scope', '$http', function($scope, $http) {
+app.controller("myCtrl", [ '$scope', '$http', function($scope, $http) {
 
 	$http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded; charset=utf-8";
 	
