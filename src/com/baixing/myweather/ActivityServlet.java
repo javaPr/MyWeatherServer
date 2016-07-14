@@ -1,6 +1,7 @@
 package com.baixing.myweather;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.baixing.myweather.bean.Activity;
+import com.baixing.myweather.bean.ActivityInfo;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 /**
  * Servlet implementation class ActivityServlet
@@ -34,7 +37,16 @@ public class ActivityServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doPost(request,response);
-		List<Activity> listActicity = new ArrayList<>();
+		String res = Utils.sendGet("http://172.17.0.211:1234/api/adboard/query/all");
+		System.out.println(res);
+		Gson gson = new Gson();
+		Type listType = new TypeToken<List<ActivityInfo>>(){}.getType();  
+        List<ActivityInfo> actiList = gson.fromJson(res, listType);  
+		System.out.println(actiList);
+		
+//		List<ActivityInfo> actiList = (List<ActivityInfo>) new Gson().fromJson(res, ActivityInfo.class);
+//		System.out.println(actiList);
+		/*List<Activity> listActicity = new ArrayList<>();
 		Activity activity = new Activity();
 		activity.setDetails("this is content");
 		activity.setEditor("engineer 1");
@@ -45,10 +57,14 @@ public class ActivityServlet extends HttpServlet {
 		activity1.setDetails("this is content two");
 		activity1.setEditor("engineer 2");
 		activity1.setStarttime("2016-07-12");
-		listActicity.add(activity1);
+		listActicity.add(activity1);*/
 		
-		String json = new Gson().toJson(listActicity);
+		String json = new Gson().toJson(actiList);
+		System.out.println(res);
+		
         response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        
         response.getWriter().write(json);
 		
 		

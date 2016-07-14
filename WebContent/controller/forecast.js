@@ -25,7 +25,9 @@ app.controller("forecastCtrl",['$scope','$http',function($scope,$http){
 		$scope.weatherList = data;
 	}).error(function(){
 		console.log("FAIL");
-	})
+	});
+	
+	$scope.setMyclass 
 	
 	
 	

@@ -2,7 +2,7 @@
  * 
  */
 'use strict';
-app.controller('releaseCtrl',['$scope','$http',function($scope,$http){
+app.controller('releaseCtrl',['$scope','$http','$location',function($scope,$http,$location){
 	$scope.activity={
 			share:'',
 			detail:'',
@@ -24,6 +24,12 @@ app.controller('releaseCtrl',['$scope','$http',function($scope,$http){
 			}
 		}).success(function(data) {
 			console.log(data);
+			if(data.success == 1){
+				alert("ok");
+				$location.path('/activities');
+			}else{
+				alert("fail");
+			}
 			//alert("保存成功！！");
 		}).error(function() {
 			alert("调用后台方法失败！！");

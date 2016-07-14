@@ -122,10 +122,7 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("application/json");
         
         response.getWriter().write(res);
-        Cookie[] cookies = request.getCookies();
-         
-        System.out.println();
-        System.out.println(cookies);
+      
 	}
 
 }
