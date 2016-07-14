@@ -1,6 +1,8 @@
 package com.baixing.myweather;
 
 import java.io.IOException;
+import java.util.TimeZone;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,6 +41,7 @@ public class PublishServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
+		TimeZone.setDefault(TimeZone.getTimeZone("Asia/Shanghai")); 
 		String share = request.getParameter("share");
         String detail = request.getParameter("detail");
         String time = request.getParameter("time");

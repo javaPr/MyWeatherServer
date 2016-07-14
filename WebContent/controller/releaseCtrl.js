@@ -12,6 +12,7 @@ app.controller('releaseCtrl',['$scope','$http',function($scope,$http){
 	
 	$scope.release = function(activity){
 		console.log(activity);
+		//activity.time = $scope.activity.time+""
 		$http({
 			method : "POST",
 			url : "PublishServlet",
@@ -19,7 +20,7 @@ app.controller('releaseCtrl',['$scope','$http',function($scope,$http){
 				share : $scope.activity.share,
 				detail : $scope.activity.detail,
 				title : $scope.activity.title,
-				time : $scope.activity.time
+				time : activity.time
 			}
 		}).success(function(data) {
 			console.log(data);

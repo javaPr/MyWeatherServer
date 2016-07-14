@@ -12,6 +12,8 @@ import java.net.URLConnection;
 
 public class Utils {
 	public static final String IP = "172.17.0.211";
+	public static String session_id = "";
+	public static String session_cookie_name = "";
 	public static String sendPost(String url, String param) {
         PrintWriter out = null;
         BufferedReader in = null;

@@ -1,85 +1,66 @@
-<meta charset="UTF-8" />
-<div ui-content-for="title" xmlns="http://www.w3.org/1999/html">
-	<span>天气预报</span>
+<div ui-content-for="title" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+  <span>天气预报</span>
 </div>
 
 <div class="scrollable">
-	<div class="scrollable-content" ng-controller="forecastCtrl">
-		<div class='section'>
-			<ui-state id='activeTab' default='1'></ui-state>
+  <div class="scrollable-content" ng-controller="forecastCtrl">
+    <div class='section'>
+      <ui-state id='activeTab' default='1'></ui-state>
 
-			<ul class="nav nav-tabs">
-				<li ui-class="{'active': activeTab == 1}"><a
-					ui-set="{'activeTab': 1}">今日详情 </a></li>
-				<li ui-class="{'active': activeTab == 2}"><a
-					ui-set="{'activeTab': 2}">未来五日</a></li>
-			</ul>
+      <ul class="nav nav-tabs">
+        <li ui-class="{'active': activeTab == 1}">
+          <a ui-set="{'activeTab': 1}">今日详情 </a>
+        </li>
+        <li ui-class="{'active': activeTab == 2}">
+          <a ui-set="{'activeTab': 2}">未来五日</a>
+        </li>
+      </ul>
 
       <div ui-if="activeTab == 1">
-        <div class = "left">
           <div>
             <h2 class="page-header"> 今日天气 </h2>
           </div>
-          <div>
-            <p><small><span ng-bind="now.dt"></span></small></p><br>
-            <h3><small>最低气温: <span ng-bind="now.main.temp_min"></span></small></h3><br>
-            <h3><small>最高气温: <span ng-bind="now.main.temp_max"></span></small></h3><br>
-            <h3><small>气压: <span ng-bind="now.main.pressure"></span></small></h3><br>
-            <h3><small>湿度: <span ng-bind="now.main.humidity"></span></small></h3><br>
-            <h3><small>风力: <span ng-bind="now.wind.speed + '  ' + now.wind.deg"></span></small></h3><br>
-          </div>
-        </div>
-        <div class="right">
-          <div>
-            <h><span ng-bind ="now.main.temp"></span></h>
-          </div>
-          <div>
-            <h3><small><span ng-bind ="now.weather.main"></span></small></h3>
-          </div>
-          <div>
-            <h3><small><span ng-bind ="now.weather.description"></span></small></h3>
-          </div>
-        </div>
-      </div>
+          <div class="list-group text-center">
+            <div class="list-group-item list-group-item-home">
+              <div>
+                <i class="fa fa-cloud feature-icon text-primary"></i>
+              </div>
+              <div>
+                <h3 class="home-heading">当前气温:<span ng-bind ="now.main.temp"></span></h3>
+                <p><small><span ng-bind ="now.weather.main"></span> + <span ng-bind ="now.weather.description"></span></small></p>
+              </div>
+            </div>
 
-      <div ui-if="activeTab == 2" ng-bind="further">
-        <div class="scrollable">
-          <div class="scrollable-content">
-            <div class="list-group text-center">
-        <div class="list-group-item list-group-item-home">
-          <div>
-            <h3 class="home-heading">{{further[0].time + '  ' + further[0].temp}}</h3>
-            {{further[0].weather}}
-          </div>
-        </div>
-        <div class="list-group-item list-group-item-home">
-          <div>
-            <h3 class="home-heading">{{further[1].time + '  ' + further[1].temp}}</h3>
-            {{further[1].weather}}
-          </div>
-        </div>
-        <div class="list-group-item list-group-item-home">
-          <div>
-            <h3 class="home-heading">{{further[2].time + '  ' + further[2].temp}}</h3>
-            {{further[2].weather}}
-          </div>
-        </div>
-        <div class="list-group-item list-group-item-home">
-          <div>
-            <h3 class="home-heading">{{further[3].time + '  ' + further[3].temp}}</h3>
-            {{further[3].weather}}
-          </div>
-        </div>
-        <div class="list-group-item list-group-item-home">
-          <div
-            <h3 class="home-heading">{{further[4].time + '  ' + further[4].temp}}</h3>
-            {{further[4].weather}}
-          </div>
-        </div>
-      </div>
+            <div class="list-group-item list-group-item-home">
+              <div>
+                <p><small><span ng-bind="now.dt"></span></small></p>
+                <p><small>最低气温: <span ng-bind="now.main.temp_min"></span></small></p>
+                <p><small>最高气温: <span ng-bind="now.main.temp_max"></span></small></p>
+                <p><small>气压: <span ng-bind="now.main.pressure"></span></small></p>
+                <p><small>湿度: <span ng-bind="now.main.humidity"></span></small></p>
+                <p><small>风力: <span ng-bind="now.wind.speed + '  ' + now.wind.deg"></span></small></p>
+              </div>
             </div>
           </div>
-        </div>
+      </div>
+
+       <div ui-if="activeTab == 2">
+        <h3 class="page-header">未来五日天气</h3>
+        <table>
+        <tr ng-repeat="wea in weatherList">
+				<td>
+					<dl>
+						<dt>温度 ： {{wea[0].main.temp}}</dt>
+						<dd>天气： {{wea[0].weather.main}}({{wea[0].weather.description}})</dd>
+						<dd>湿度： {{wea[0].main.humidity}}</dd>
+						<dd>湿度： {{wea[0].dt}}</dd>
+					</dl>
+				</td>
+			</tr>
+        </table>
+         
+      </div>
     </div>
 
   </div>
+</div>

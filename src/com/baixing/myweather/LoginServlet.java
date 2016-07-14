@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.baixing.myweather.bean.Activity;
+import com.baixing.myweather.bean.LoginInfo;
 import com.baixing.myweather.bean.User;
 import com.google.gson.Gson;
 import com.google.gson.JsonParser;
@@ -113,7 +114,11 @@ public class LoginServlet extends HttpServlet {
         
         String res = Utils.sendPost("http://172.17.0.211:1234/api/user/login",new Gson().toJson(user));
         System.out.println(res);
+        LoginInfo loginInfo = gson.fromJson(res,LoginInfo.class);
+        System.out.println(loginInfo.getSession_cookie_name());
+
         response.setContentType("application/json");
+        
         response.getWriter().write(res);
         Cookie[] cookies = request.getCookies();
          
