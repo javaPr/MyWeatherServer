@@ -2,7 +2,7 @@
  * 
  */
 'use strict';
-app.controller("signCtrl",['$scope','$http',function($scope,$http){
+app.controller("signCtrl",['$scope','$http','$window','$location',function($scope,$http,$window,$location){
 	$scope.user={
 			email:'',
 			password:''
@@ -20,6 +20,9 @@ app.controller("signCtrl",['$scope','$http',function($scope,$http){
 			}
 		}).success(function(data) {
 			console.log(data);
+			$window.username = data.username;
+			$window.userlogin = "logined";
+			$location.path('/tabs');
 			//alert("保存成功！！");
 		}).error(function() {
 			console.log("调用后台方法失败！！");

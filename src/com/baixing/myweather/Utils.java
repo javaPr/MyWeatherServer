@@ -11,6 +11,7 @@ import java.net.URL;
 import java.net.URLConnection;
 
 public class Utils {
+	public static final String IP = "172.17.0.211";
 	public static String sendPost(String url, String param) {
         PrintWriter out = null;
         BufferedReader in = null;
@@ -36,6 +37,7 @@ public class Utils {
             // 定义BufferedReader输入流来读取URL的响应
             in = new BufferedReader(
                     new InputStreamReader(conn.getInputStream()));
+            
             String line;
             while ((line = in.readLine()) != null) {
                 result += line;

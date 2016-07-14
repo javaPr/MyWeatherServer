@@ -1,38 +1,74 @@
 package com.baixing.myweather.bean;
 
 public class Activity {
-	private String name;
-	private String content;
-	private String time;
+	private String editor;
+	private String details;
+	private String title = "";
+	private String starttime;
 	
-	public Activity(){
-		
-	}
-	
-	public Activity(String name, String content, String time) {
+	public Activity() {
 		super();
-		this.name = name;
-		this.content = content;
-		this.time = time;
 	}
-	public String getName() {
-		return name;
+
+
+
+	public Activity(String editor, String details, String starttime) {
+		super();
+		this.editor = editor;
+		this.details = details;
+		this.title = "";
+		this.starttime = starttime;
 	}
-	public void setName(String name) {
-		this.name = name;
+
+
+
+	public String getEditor() {
+		return editor;
 	}
-	public String getContent() {
-		return content;
+
+
+
+	public void setEditor(String editor) {
+		this.editor = editor;
 	}
-	public void setContent(String content) {
-		this.content = content;
+
+
+
+	public String getDetails() {
+		return details;
 	}
-	public String getTime() {
-		return time;
+
+
+
+	public void setDetails(String details) {
+		this.details = details;
 	}
-	public void setTime(String time) {
-		this.time = time;
+
+
+
+	public String getTitle() {
+		return title;
 	}
+
+
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+
+
+	public String getStarttime() {
+		return starttime;
+	}
+
+
+
+	public void setStarttime(String starttime) {
+		this.starttime = starttime;
+	}
+	
+	
 	
 	
 

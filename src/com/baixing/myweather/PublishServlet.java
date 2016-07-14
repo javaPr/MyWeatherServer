@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.baixing.myweather.bean.Activity;
+import com.google.gson.Gson;
+
 /**
  * Servlet implementation class PublishServlet
  */
@@ -35,7 +38,19 @@ public class PublishServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		//doGet(request, response);
+		String share = request.getParameter("share");
+        String detail = request.getParameter("detail");
+        String time = request.getParameter("time");
+        String title = request.getParameter("title");
+        Activity activity = new Activity(share,detail,time);
+        activity.setTitle(title);
+        String json = new Gson().toJson(activity);
+        System.out.println(json);
+        
+        String res = Utils.sendPost("http://172.17.0.211:1234/api/adboard/add", json);
+        System.out.println(res);
+        
 	}
 
 }

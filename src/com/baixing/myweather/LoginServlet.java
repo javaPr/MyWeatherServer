@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -36,15 +37,15 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Activity> listActicity = new ArrayList<>();
 		Activity activity = new Activity();
-		activity.setContent("this is content");
-		activity.setName("engineer 1");
-		activity.setTime("2016-07-12");
+		activity.setDetails("this is content");
+		activity.setEditor("engineer 1");
+		activity.setStarttime("2016-07-12");
 		listActicity.add(activity);
 		
 		Activity activity1 = new Activity();
-		activity1.setContent("this is content two");
-		activity1.setName("engineer 233333");
-		activity1.setTime("2016-07-12");
+		activity1.setDetails("this is content two");
+		activity1.setEditor("engineer 233333");
+		activity1.setStarttime("2016-07-12");
 		listActicity.add(activity1);
 		
 		String json = new Gson().toJson(listActicity);
@@ -78,8 +79,7 @@ public class LoginServlet extends HttpServlet {
 		System.out.println("str -> "+str.toString());
 		*/
 		
-		System.out.println("====================");
-		
+ 		
 		Gson gson = new Gson();
         JsonParser parser = new JsonParser();
 //        JsonObject obj = (JsonObject) parser
@@ -91,31 +91,34 @@ public class LoginServlet extends HttpServlet {
         }
 		*/
         String email = request.getParameter("email");
-        System.out.println(request.getParameter("email"));
         String password = request.getParameter("password");
-        System.out.println(password);
         User user = new User();
-        user.setUsername("admin");
-        user.setPassword("1234");
+        user.setUsername(email);
+        user.setPassword(password);
         //String loginRes = Utils.sendGet("http://wdchang.github.io/mydata/jsondata.json");
         
        
        
-		List<Activity> listActicity = new ArrayList<>();
+/*		List<Activity> listActicity = new ArrayList<>();
 		
 		Activity activity1 = new Activity();
-		activity1.setContent("this is content two####");
-		activity1.setName("engineer 233333");
-		activity1.setTime("2016-07-12");
+		activity1.setDetails("this is content two####");
+		activity1.setEditor("engineer 233333");
+		activity1.setStarttime("2016-07-12");
 		listActicity.add(activity1);
 		
-		String json = new Gson().toJson(listActicity);
-        response.setContentType("application/json");
-        response.getWriter().write(json);
+		String json = new Gson().toJson(listActicity);*/
+       
         System.out.println("========================");
         
         String res = Utils.sendPost("http://172.17.0.211:1234/api/user/login",new Gson().toJson(user));
         System.out.println(res);
+        response.setContentType("application/json");
+        response.getWriter().write(res);
+        Cookie[] cookies = request.getCookies();
+         
+        System.out.println();
+        System.out.println(cookies);
 	}
 
 }

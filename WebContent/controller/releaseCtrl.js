@@ -6,7 +6,8 @@ app.controller('releaseCtrl',['$scope','$http',function($scope,$http){
 	$scope.activity={
 			share:'',
 			detail:'',
-			time:''
+			time:'',
+			title:''
 	}
 	
 	$scope.release = function(activity){
@@ -15,8 +16,10 @@ app.controller('releaseCtrl',['$scope','$http',function($scope,$http){
 			method : "POST",
 			url : "PublishServlet",
 			params : {
-				password : $scope.activity.share,
-				email : $scope.activity.detail
+				share : $scope.activity.share,
+				detail : $scope.activity.detail,
+				title : $scope.activity.title,
+				time : $scope.activity.time
 			}
 		}).success(function(data) {
 			console.log(data);

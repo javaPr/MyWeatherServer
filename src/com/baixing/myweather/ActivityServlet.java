@@ -36,15 +36,15 @@ public class ActivityServlet extends HttpServlet {
 		//doPost(request,response);
 		List<Activity> listActicity = new ArrayList<>();
 		Activity activity = new Activity();
-		activity.setContent("this is content");
-		activity.setName("engineer 1");
-		activity.setTime("2016-07-12");
+		activity.setDetails("this is content");
+		activity.setEditor("engineer 1");
+		activity.setStarttime("2016-07-12");
 		listActicity.add(activity);
 		
 		Activity activity1 = new Activity();
-		activity1.setContent("this is content two");
-		activity1.setName("engineer 2");
-		activity1.setTime("2016-07-12");
+		activity1.setDetails("this is content two");
+		activity1.setEditor("engineer 2");
+		activity1.setStarttime("2016-07-12");
 		listActicity.add(activity1);
 		
 		String json = new Gson().toJson(listActicity);
