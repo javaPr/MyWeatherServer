@@ -1,32 +1,23 @@
 package com.baixing.myweather;
 
 import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.baixing.myweather.bean.Activity;
-import com.baixing.myweather.bean.ActivityInfo;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
 /**
- * Servlet implementation class ActivityServlet
+ * Servlet implementation class CautionServlet
  */
-@WebServlet("/ActivityServlet")
-public class ActivityServlet extends HttpServlet {
+@WebServlet("/CautionServlet")
+public class CautionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ActivityServlet() {
+    public CautionServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,25 +27,11 @@ public class ActivityServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//doPost(request,response);
-		String res = Utils.sendGet("http://172.17.0.211:1234/api/adboard/query/all");
+		String res = Utils.sendGet("http://172.17.0.211:1234/api/usr/caution");
 		System.out.println(res);
-		Gson gson = new Gson();
-		Type listType = new TypeToken<List<ActivityInfo>>(){}.getType();  
-        List<ActivityInfo> actiList = gson.fromJson(res, listType);  
-		System.out.println(actiList);
-		
-
-		
-		String json = new Gson().toJson(actiList);
-		System.out.println(res);
-		
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
-        
-        response.getWriter().write(json);
-		
-		
+        response.getWriter().write(res);
 	}
 
 	/**
@@ -62,6 +39,7 @@ public class ActivityServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

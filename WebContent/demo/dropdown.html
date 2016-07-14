@@ -3,15 +3,15 @@
 </div>
 
 <div class="scrollable">
-  <div class="scrollable-content">
+  <div class="scrollable-content" ng-controller="lifeTipsCtrl">
     <div class="section">
         
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">穿衣指数</h3>
         </div>
-        <div class="panel-body" ng-bind = "clothes">
-           {{clothes}}
+        <div class="panel-body" ng-bind = "clothes.clothes_1">
+            
         </div>
       </div>
 
@@ -19,8 +19,9 @@
         <div class="panel-heading">
           <h3 class="panel-title">装备配备</h3>
         </div>
-        <div class="panel-body" ng-bind = "equip">
-          {{clothes}}
+        <div class="panel-body">
+          {{equip.equip_2}}<br/>
+          {{equip.equip_1}}
         </div>
       </div>
 
@@ -28,8 +29,8 @@
         <div class="panel-heading">
           <h3 class="panel-title">注意事项</h3>
         </div>
-        <div class="panel-body" ng-bind = "caution">
-          {{clothes}}
+        <div class="panel-body">
+          {{caution.caution_3}}
         </div>
       </div>
 

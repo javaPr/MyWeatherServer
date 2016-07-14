@@ -27,7 +27,7 @@ app.controller("forecastCtrl",['$scope','$http',function($scope,$http){
 		console.log("FAIL");
 	});
 	
-	$scope.setMyclass 
+	//$scope.setMyclass 
 	
 	
 	
