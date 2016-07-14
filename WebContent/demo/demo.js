@@ -47,6 +47,8 @@ app.config(function($routeProvider) {
   $routeProvider.when('/carousel',      {templateUrl: 'demo/carousel.html', reloadOnSearch: false});
   $routeProvider.when('/sidebar',      {templateUrl: 'demo/sidebar.html', reloadOnSearch: false});
   $routeProvider.when('/activities',    {templateUrl:'demo/activities.html',reloadOnSearch:false});
+  $routeProvider.when('/publish',    {templateUrl:'demo/publish.html',reloadOnSearch:false});
+
   /*$routeProvider.otherwise()*/
  
 });

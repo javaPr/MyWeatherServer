@@ -1,44 +1,37 @@
 <div ui-content-for="title">
-  <span>登录</span>
+	<span>登录</span>
 </div>
 
 <div class="scrollable">
- <div class="scrollable-content section">
-   
-  <form role="form" ng-submit='login()'>
-    <fieldset>
-      <legend>登录</legend>
-        <div class="form-group has-success has-feedback">
-          <label>电子邮箱</label>
-          <input type="email"
-                 ng-model="email"
-                 class="form-control"
-                 placeholder="Enter email">
-        </div>
+	<div class="scrollable-content section" ng-controller="signCtrl">
 
-        <div class="form-group">
-          <label>密码</label>
-          <input type="password" 
-                 class="form-control"
-                 placeholder="Password">
-        </div>
+		<form role="form" ng-submit='login(user)'>
+			<fieldset>
+				<legend><!-- 登录 --></legend>
+				<div class="form-group has-success has-feedback">
+					<label>电子邮箱</label> <input type="email" ng-model="user.email"
+						class="form-control" placeholder="Enter email">
+				</div>
 
-        <div class="form-group">
+				<div class="form-group">
+					<label>密码</label> <input type="password" class="form-control"
+						ng-model="user.password" placeholder="Password">
+				</div>
+
+				<!--  <div class="form-group">
           <label>记住我</label>
           <ui-switch 
             ng-model='rememberMe'></ui-switch>
-        </div>
-    </fieldset>
-    <hr>
+        </div> -->
+			</fieldset>
+			<hr>
 
-    <button class="btn btn-primary btn-block">
-      登录
-    </button>
+			<button class="btn btn-primary btn-block">登录</button>
 
-    <div ui-content-for="navbarAction">
-      <a class='btn' ng-click='login()'>Login</a>
-    </div>
+			<!-- <div ui-content-for="navbarAction">
+				<a class='btn' ng-click='login()'>Login</a>
+			</div> -->
 
-  </form>
- </div>
+		</form>
+	</div>
 </div>

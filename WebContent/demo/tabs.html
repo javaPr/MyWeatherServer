@@ -1,20 +1,19 @@
+<meta charset="UTF-8" />
 <div ui-content-for="title" xmlns="http://www.w3.org/1999/html">
-  <span>天气预报</span>
+	<span>天气预报</span>
 </div>
 
 <div class="scrollable">
-  <div class="scrollable-content">
-    <div class='section'>
-      <ui-state id='activeTab' default='1'></ui-state>
+	<div class="scrollable-content" ng-controller="forecastCtrl">
+		<div class='section'>
+			<ui-state id='activeTab' default='1'></ui-state>
 
-      <ul class="nav nav-tabs">
-        <li ui-class="{'active': activeTab == 1}">
-          <a ui-set="{'activeTab': 1}">今日详情 </a>
-        </li>
-        <li ui-class="{'active': activeTab == 2}">
-          <a ui-set="{'activeTab': 2}">未来五日</a>
-        </li>
-      </ul>
+			<ul class="nav nav-tabs">
+				<li ui-class="{'active': activeTab == 1}"><a
+					ui-set="{'activeTab': 1}">今日详情 </a></li>
+				<li ui-class="{'active': activeTab == 2}"><a
+					ui-set="{'activeTab': 2}">未来五日</a></li>
+			</ul>
 
       <div ui-if="activeTab == 1">
         <div class = "left">
@@ -72,7 +71,7 @@
           </div>
         </div>
         <div class="list-group-item list-group-item-home">
-          <div>
+          <div
             <h3 class="home-heading">{{further[4].time + '  ' + further[4].temp}}</h3>
             {{further[4].weather}}
           </div>
@@ -84,4 +83,3 @@
     </div>
 
   </div>
-</div>

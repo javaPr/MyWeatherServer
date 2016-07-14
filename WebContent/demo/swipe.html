@@ -4,6 +4,13 @@
       ui-swipe-right='swiped("RIGHT")'>
 
  <h2>Swipe me</h2>
+ <div ng-controller="myCtrl">
+		<form ng-submit="sendPost()">
+			<input ng-model="name" />
+			<button type="submit">Send</button>
+		</form>
+		<p>Message from servlet: {{message}}
+	</div>
 
   <div style='-webkit-user-drag: none; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;'>
     <p>

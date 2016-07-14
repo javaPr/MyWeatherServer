@@ -1,28 +1,24 @@
 package com.baixing.myweather;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-
-
 /**
- * Servlet implementation class MyServlet
+ * Servlet implementation class FutureServlet
  */
-@WebServlet("/MyServlet")
-public class MyServlet extends HttpServlet {
+@WebServlet("/FutureServlet")
+public class FutureServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
     /**
-     * Default constructor. 
+     * @see HttpServlet#HttpServlet()
      */
-    public MyServlet() {
+    public FutureServlet() {
+        super();
         // TODO Auto-generated constructor stub
     }
 
@@ -31,10 +27,11 @@ public class MyServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
-		
-		
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		String res = Utils.sendGet("http://172.17.0.211:1234/api/weather/now");
+		//System.out.println(res);
+		response.setContentType("application/json");
+		response.getWriter().write(res);
 	}
 
 	/**
@@ -43,29 +40,6 @@ public class MyServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		StringBuilder sb = new StringBuilder();
-		BufferedReader br = request.getReader();
-		String str = null;
-		while ((str = br.readLine()) != null) {
-			sb.append(str);
-		}
-		
-		System.out.println("name -> "+str.toString()+"hello");
-		
-		/*JSONObject jObj;
-		String name = null;
-		try {
-			jObj = new JSONObject(sb.toString());
-			name = jObj.getString("name");
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-		
-
-		response.setContentType("text/plain");
-		response.setCharacterEncoding("UTF-8");
-		response.getWriter().write("hello from java. you entered : " + str.toString());
 	}
 
 }
