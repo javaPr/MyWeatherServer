@@ -17,48 +17,49 @@
       </ul>
 
       <div ui-if="activeTab == 1">
-          <div>
-            <h2 class="page-header"> 今日天气 </h2>
-          </div>
-          <div class="list-group text-center">
-            <div class="list-group-item list-group-item-home">
-              <div>
-                <i class="fa fa-cloud feature-icon text-primary"></i>
-              </div>
-              <div>
-                <h3 class="home-heading">当前气温:<span ng-bind ="now.main.temp"></span></h3>
-                <p><small><span ng-bind ="now.weather.main"></span> + <span ng-bind ="now.weather.description"></span></small></p>
-              </div>
+        <div>
+          <h2 class="page-header"> 今日天气 </h2>
+        </div>
+        <div class="list-group text-center">
+          <div class="list-group-item list-group-item-home">
+            <div>
+              <i class="fa fa-cloud feature-icon text-primary"></i>
             </div>
+            <div>
+              <h3 class="home-heading">当前气温:<span ng-bind ="now.main.temp"></span></h3>
+              <p><small><span ng-bind ="now.weather.main"></span> + <span ng-bind ="now.weather.description"></span></small></p>
+            </div>
+          </div>
 
-            <div class="list-group-item list-group-item-home">
-              <div>
-                <p><small><span ng-bind="now.dt"></span></small></p>
-                <p><small>最低气温: <span ng-bind="now.main.temp_min"></span></small></p>
-                <p><small>最高气温: <span ng-bind="now.main.temp_max"></span></small></p>
-                <p><small>气压: <span ng-bind="now.main.pressure"></span></small></p>
-                <p><small>湿度: <span ng-bind="now.main.humidity"></span></small></p>
-                <p><small>风力: <span ng-bind="now.wind.speed + '  ' + now.wind.deg"></span></small></p>
-              </div>
+          <div class="list-group-item list-group-item-home">
+            <div>
+              <p><small><span ng-bind="now.dt"></span></small></p>
+              <p><small>最低气温: <span ng-bind="now.main.temp_min"></span></small></p>
+              <p><small>最高气温: <span ng-bind="now.main.temp_max"></span></small></p>
+              <p><small>气压: <span ng-bind="now.main.pressure"></span></small></p>
+              <p><small>湿度: <span ng-bind="now.main.humidity"></span></small></p>
+              <p><small>风力: <span ng-bind="now.wind.speed + '  ' + now.wind.deg"></span></small></p>
             </div>
           </div>
+        </div>
       </div>
 
-       <div ui-if="activeTab == 2">
+      <div ui-if="activeTab == 2">
         <h3 class="page-header">未来五日天气</h3>
-        <table>
-        <tr ng-repeat="wea in weatherList">
-				<td>
-					<dl>
-						<dt>温度 ： {{wea[0].main.temp}}</dt>
-						<dd>天气： {{wea[0].weather.main}}({{wea[0].weather.description}})</dd>
-						<dd>湿度： {{wea[0].main.humidity}}</dd>
-						<dd>湿度： {{wea[0].dt}}</dd>
-					</dl>
-				</td>
-			</tr>
-        </table>
-         
+        <div class="list-group text-center">
+          <div class="list-group-item list-group-item-home" ng-repeat="wea in weatherList">
+            <div>
+              <i class="fa fa-cloud feature-icon text-primary"></i>
+            </div>
+            <div>
+              <h3 class="home-heading">当前气温 : {{wea[0].main.temp}}</h3>
+              <p><small>天气状况: {{wea[0].weather.main}} + {{wea[0].weather.description}} </small></p>
+              <p><small>时间 ：{{wea[0].dt}}</small></p>
+              <p><small>湿度: {{wea[0].main.humidity}} </small></p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 

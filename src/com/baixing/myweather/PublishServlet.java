@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.baixing.myweather.bean.Activity;
 import com.baixing.myweather.bean.PublishMsg;
 import com.google.gson.Gson;
@@ -53,6 +56,19 @@ public class PublishServlet extends HttpServlet {
         String json = new Gson().toJson(activity);
         System.out.println(json);
         System.out.println(Utils.session_id);
+        
+       /* JSONObject jsonObj = new JSONObject();
+        try {
+			jsonObj.put("editor", share);
+			 jsonObj.put("details", detail);
+		        jsonObj.put("title", title);
+		        jsonObj.put("starttime", time);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+       
+        */
         String res = Utils.sendPost("http://172.17.0.211:1234/api/adboard/add", json);
         System.out.println(res);
         PublishMsg msg = new Gson().fromJson(res, PublishMsg.class);

@@ -1,6 +1,7 @@
 package com.baixing.myweather;
 
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -15,7 +16,8 @@ public class Utils {
 	public static String session_id = "";
 	public static String session_cookie_name = "";
 	public static String sendPost(String url, String param) {
-        PrintWriter out = null;
+        // PrintWriter out = null;
+		DataOutputStream out = null;
         BufferedReader in = null;
         String result = "";
         try {
@@ -23,19 +25,27 @@ public class Utils {
             // 打开和URL之间的连接
             URLConnection conn = realUrl.openConnection();
             // 设置通用的请求属性
+            
             conn.setRequestProperty("accept", "*/*");
+            //conn.setRequestProperty("content-type", "application/json");
+            //conn.setRequestProperty("charset", "utf-8");
             conn.setRequestProperty("connection", "Keep-Alive");
             conn.setRequestProperty("user-agent",
                     "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
-            conn.setRequestProperty("session_id", Utils.session_id);
-            conn.setRequestProperty("session_cookie_name", Utils.session_cookie_name);
+            //conn.setRequestProperty(Utils.session_cookie_name, Utils.session_id);
+            String cookies = String.format("%s=%s", Utils.session_cookie_name, Utils.session_id);
+            conn.setRequestProperty("Cookie", cookies);
+            // conn.setRequestProperty("session_cookie_name", Utils.session_cookie_name);
             // 发送POST请求必须设置如下两行
             conn.setDoOutput(true);
             conn.setDoInput(true);
             // 获取URLConnection对象对应的输出流
-            out = new PrintWriter(conn.getOutputStream());
+            // out = new PrintWriter(conn.getOutputStream());
+            out = new DataOutputStream(conn.getOutputStream());
             // 发送请求参数
-            out.print(param);
+            
+            //out.print(param);
+            out.write(param.getBytes("UTF-8"));
             // flush输出流的缓冲
             out.flush();
             // 定义BufferedReader输入流来读取URL的响应
