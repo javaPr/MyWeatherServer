@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.baixing.myweather.bean.Activity;
+import com.baixing.myweather.bean.PublishMsg;
 import com.google.gson.Gson;
 
 /**
@@ -48,11 +49,14 @@ public class PublishServlet extends HttpServlet {
         String title = request.getParameter("title");
         Activity activity = new Activity(share,detail,time);
         activity.setTitle(title);
+        
         String json = new Gson().toJson(activity);
         System.out.println(json);
-        
+        System.out.println(Utils.session_id);
         String res = Utils.sendPost("http://172.17.0.211:1234/api/adboard/add", json);
         System.out.println(res);
+        PublishMsg msg = new Gson().fromJson(res, PublishMsg.class);
+        System.out.println(msg.getMsg());
         
 	}
 

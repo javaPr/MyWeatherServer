@@ -115,6 +115,8 @@ public class LoginServlet extends HttpServlet {
         String res = Utils.sendPost("http://172.17.0.211:1234/api/user/login",new Gson().toJson(user));
         System.out.println(res);
         LoginInfo loginInfo = gson.fromJson(res,LoginInfo.class);
+        Utils.session_cookie_name = loginInfo.getSession_cookie_name();
+        Utils.session_id = loginInfo.getSession_id();
         System.out.println(loginInfo.getSession_cookie_name());
 
         response.setContentType("application/json");
