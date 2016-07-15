@@ -6,46 +6,10 @@
 <div class="scrollable" style="background-color: white"
 	ng-controller="actiCtrl">
 	<div class="scrollable-content">
-		<table class="table table-bordered">
-			<!-- <tr>
-				<td>
-					<dl>
-						<dt>某某人</dt>
-						<dd>下面是关于活动的内容，某某工程师技术交流活动.</dd>
-						<dd>2016-8-9</dd>
-					</dl>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<dl>
-						<dt>某某人</dt>
-						<dd>下面是关于活动的内容，某某工程师技术交流活动.</dd>
-						<dd>2016-8-9</dd>
-					</dl>
-				</td>
-			</tr>
-
-			<tr>
-				<td>
-					<dl>
-						<dt>某某人</dt>
-						<dd>下面是关于活动的内容，某某工程师技术交流活动.</dd>
-						<dd>2016-8-9</dd>
-					</dl>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<dl>
-						<dt>某某人</dt>
-						<dd>下面是关于活动的内容，某某工程师技术交流活动.</dd>
-						<dd>2016-8-9</dd>
-					</dl>
-				</td>
-			</tr> -->
-
+		<!-- <table class="table table-bordered">
+			      
 			<tr ng-repeat="acti in listActivity">
+			<div class="panel-body">
 				<td>
 					<dl>
 						<dt>{{acti.editor}}</dt>
@@ -53,11 +17,24 @@
 						<dd>{{acti.starttime}}</dd>
 					</dl>
 				</td>
+				</div>
 			</tr>
 			<tr>
 			<td>&nbsp;</td>
 			</tr>
-		</table>
+		</table> -->
+		<div class="panel panel-default" style="margin: 1em 1em 1em 1em" ng-repeat="acti in listActivity">
+			<div class="panel-heading">
+				<h3 class="panel-title">{{acti.editor}}</h3>
+			</div>
+			<div class="panel-body">
+				{{acti.details}}<br /> {{acti.starttime}}
+			</div>
+		</div>
+		<div>
+		&nbsp;<br/><br>
+		</div>
 	</div>
+	
 </div>
 
