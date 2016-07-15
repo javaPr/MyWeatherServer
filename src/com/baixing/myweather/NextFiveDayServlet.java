@@ -28,7 +28,7 @@ public class NextFiveDayServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		String res = Utils.sendGet("http://172.17.0.211:1234/api/weather/further");
+		String res = Utils.sendGet("http://127.0.0.1:1234/api/weather/further");
 		response.setContentType("application/json");
 		response.getWriter().write(res);
 		System.out.println(res);

@@ -57,7 +57,7 @@ public class PublishServlet extends HttpServlet {
         System.out.println(json);
         System.out.println(Utils.session_id);
         
-        String res = Utils.sendPost("http://172.17.0.211:1234/api/adboard/add", json);
+        String res = Utils.sendPost("http://127.0.0.1:1234/api/adboard/add", json);
         System.out.println(res);
         PublishMsg msg = new Gson().fromJson(res, PublishMsg.class);
         System.out.println(msg.getMsg());

@@ -27,7 +27,7 @@ public class EquipServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String res = Utils.sendGet("http://172.17.0.211:1234/api/usr/equip");
+		String res = Utils.sendGet("http://127.0.0.1:1234/api/usr/equip");
 		System.out.println(res);
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");

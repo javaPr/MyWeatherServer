@@ -37,7 +37,7 @@ public class ActivityServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doPost(request,response);
-		String res = Utils.sendGet("http://172.17.0.211:1234/api/adboard/query/all");
+		String res = Utils.sendGet("http://127.0.0.1:1234/api/adboard/query/all");
 		System.out.println(res);
 		Gson gson = new Gson();
 		Type listType = new TypeToken<List<ActivityInfo>>(){}.getType();  
