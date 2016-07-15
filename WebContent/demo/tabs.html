@@ -27,7 +27,7 @@
             </div>
             <div>
               <h3 class="home-heading">当前气温:<span ng-bind ="now.main.temp"></span></h3>
-              <p><small><span ng-bind ="now.weather.main"></span> + <span ng-bind ="now.weather.description"></span></small></p>
+              <p><small><span ng-bind ="now.weather.main"></span> [ <span ng-bind ="now.weather.description"></span> ]</small></p>
             </div>
           </div>
 
@@ -38,22 +38,22 @@
               <p><small>最高气温: <span ng-bind="now.main.temp_max"></span></small></p>
               <p><small>气压: <span ng-bind="now.main.pressure"></span></small></p>
               <p><small>湿度: <span ng-bind="now.main.humidity"></span></small></p>
-              <p><small>风力: <span ng-bind="now.wind.speed + '  ' + now.wind.deg"></span></small></p>
+              <p><small>风力: <span ng-bind="now.wind.speed"></span></small></p>
             </div>
           </div>
         </div>
       </div>
 
       <div ui-if="activeTab == 2">
-        <h3 class="page-header">未来五日天气</h3>
+        <h3 class="page-header">未来几日天气</h3>
         <div class="list-group text-center">
           <div class="list-group-item list-group-item-home" ng-repeat="wea in weatherList">
             <div>
-              <i class="fa fa-cloud feature-icon text-primary"></i>
+              <i class="fa  text-primary"><img class="feature-icon" alt="" src="demo/img/{{wea[0].weather.icon}}.png"></i>
             </div>
             <div>
-              <h3 class="home-heading">当前气温 : {{wea[0].main.temp}}</h3>
-              <p><small>天气状况: {{wea[0].weather.main}} + {{wea[0].weather.description}} </small></p>
+              <h3 class="home-heading">温度 : {{wea[0].main.temp}}</h3>
+              <p><small>天气状况: {{wea[0].weather.main}} [{{wea[0].weather.description}}] </small></p>
               <p><small>时间 ：{{wea[0].dt}}</small></p>
               <p><small>湿度: {{wea[0].main.humidity}} </small></p>
             </div>
